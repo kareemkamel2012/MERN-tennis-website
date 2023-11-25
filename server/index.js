@@ -10,7 +10,7 @@ app.use(express.json());
 app.post("/player", async(req, res) => {
     try {
         const player = req.body;
-        const newPlayer = await pool.query("INSERT INTO players (player_name, ranking, country) VALUES($1, $2, $3)",
+        const newPlayer = await pool.query("INSERT INTO players (player_name, ranking, country) VALUES($1, $2, $3) RETURNING *",
             [player.player_name, player.ranking, player.country]);
 
         res.json(newPlayer);
