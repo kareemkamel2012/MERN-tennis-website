@@ -7,6 +7,18 @@ const port = 4707
 app.use(cors());
 app.use(express.json());
 
+app.get("/players", async(req, res) => {
+    try {
+        const players = await pool.query("SELECT * FROM players");
+        res.json(players.rows);
+    }
+    catch (err) {
+        console.log(err);
+    }
+    finally {
+        res.send();
+    }
+})
 app.post("/player", async(req, res) => {
     try {
         const player = req.body;
@@ -14,10 +26,12 @@ app.post("/player", async(req, res) => {
             [player.player_name, player.ranking, player.country]);
 
         res.json(newPlayer);
-        res.send();
     }
     catch (err) {
         console.log(err);
+    }
+    finally {
+        res.send();
     }
 })
 app.listen(4707, () => {
