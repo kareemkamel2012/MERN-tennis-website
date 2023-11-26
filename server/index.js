@@ -16,9 +16,6 @@ app.get("/players", async(req, res) => {
         res.status(400);
         console.log(err);
     }
-    finally {
-        res.send();
-    }
 });
 
 app.get("/player/:id", async(req, res) => {
@@ -37,9 +34,6 @@ app.get("/player/:id", async(req, res) => {
         res.status(400);
         console.log(err);
     }
-    finally {
-        res.send();
-    }
 });
 
 app.post("/player", async(req, res) => {
@@ -53,9 +47,6 @@ app.post("/player", async(req, res) => {
     catch (err) {
         res.status(400)
         console.log(err);
-    }
-    finally {
-        res.send();
     }
 });
 
@@ -76,9 +67,6 @@ app.put("/player/:id", async(req, res) => {
         res.status(400)
         console.log(err);
     }
-    finally {
-        res.send();
-    }
 });
 
 app.delete("/player/:id", async(req, res) => {
@@ -90,9 +78,6 @@ app.delete("/player/:id", async(req, res) => {
     catch (err) {
         res.status(400);
         console.log(err);
-    }
-    finally {
-        res.send();
     }
 })
 
