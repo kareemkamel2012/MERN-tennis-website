@@ -81,6 +81,21 @@ app.put("/player/:id", async(req, res) => {
     }
 });
 
+app.delete("/player/:id", async(req, res) => {
+    try {
+        await pool.query("DELETE FROM players WHERE id = ($1)",
+            [req.params.id]);
+        res.status(204);
+    }
+    catch (err) {
+        res.status(400);
+        console.log(err);
+    }
+    finally {
+        res.send();
+    }
+})
+
 app.listen(4707, () => {
     console.log(`App listening on port ${port}`);
 });
